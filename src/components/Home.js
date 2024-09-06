@@ -7,8 +7,9 @@ import { useEffect } from 'react';
 import movies from '../apiData/movies.json'
 
 export const Home = () => {
-  
+  console.log(movies);
   return (
+   
     <div className='pt-16'>
 
 
@@ -42,42 +43,24 @@ export const Home = () => {
      <div className="flex justify-center px-8">
      
       <div className="flex space-x-4">
-       
+      {movies.map((item, index) => (
+        
+      
      
-        <div className="text-center">
-          <img src={goat}  alt="Image 1" className="w-40 h-40 object-cover" />
+        <div key = {index} className="text-center">
+          <img src={ item.Images}  alt="Image 1" className="w-40 h-40 object-cover" />
           <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
             Book
           </button>
         </div>
 
       
-        <div className="text-center">
-          <img src={goat}  alt="Image 2" className="w-40 h-40 object-cover" />
-          <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
-            Book
-          </button>
-        </div>
-
        
-        <div className="text-center">
-          <img src={goat}  alt="Image 3" className="w-40 h-40 object-cover" />
-          <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
-            Book
-          </button>
-        </div>
-
-     
-        <div className="text-center">
-          <img src={goat} alt="Image 4" className="w-40 h-40 object-cover" />
-          <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded">
-            Book
-          </button>
-        </div>
+           ))}
       </div>
     </div>
 
-
+ 
 
   </div>
     
