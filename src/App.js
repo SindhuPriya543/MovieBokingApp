@@ -8,6 +8,7 @@ import { NearByEvents } from './components/NearByEvents';
 import { UpcomingMovies } from './components/UpcomingMovies';
 import {RecommendedMovies} from './components/RecommendedMovies'
 import { MoviesImageSlider } from './components/MoviesImageSlider';
+import { MovieDetails } from './components/MovieDetails';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path ='/upcomingmovies' element = {<UpcomingMovies/>}>  </Route>
         <Route path ='/moviesimageslider' element = {<MoviesImageSlider/>}>  </Route>
         <Route path ='/recmovies' element = {<RecommendedMovies/>}>  </Route>
-       
+        {/* <Route path ='/moviedetails/:moviedata' element = {<MovieDetails/>}>  </Route> */}
+        <Route path ='/moviedetails' element = {<MovieDetails/>}>  </Route>
       </Routes>
     
     </BrowserRouter>
