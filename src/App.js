@@ -23,7 +23,7 @@ function App() {
         <Route path ='/upcomingmovies' element = {<UpcomingMovies/>}>  </Route>
         <Route path ='/moviesimageslider' element = {<MoviesImageSlider/>}>  </Route>
         <Route path ='/recmovies' element = {<RecommendedMovies/>}>  </Route>
-        {/* <Route path ='/moviedetails/:moviedata' element = {<MovieDetails/>}>  </Route> */}
+        <Route path ='/moviedetails/:moviedata' element = {<MovieDetails/>}>  </Route>
         <Route path ='/moviedetails' element = {<MovieDetails/>}>  </Route>
       </Routes>
     

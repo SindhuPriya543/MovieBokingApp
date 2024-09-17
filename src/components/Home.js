@@ -3,13 +3,18 @@ import '../css/home.css';
 import upcoming_movies from '../images/upcoming_movies.png'
 import goat from '../images/goat.png'
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import movies from '../apiData/movies.json'
+import { useEffect,useState } from 'react';
+import axios from 'axios';
+//import movies from '../apiData/movies.json'
 
 export const Home = () => {
-  console.log(movies);
   const nav = useNavigate();
+  const [data,setData] = useState([]);
 
+  useEffect(() => {
+    axios.get('https://gist.githubusercontent.com/saniyusuf/406b843afdfb9c6a86e25753fe2761f4/raw/523c324c7fcc36efab8224f9ebb7556c09b69a14/Film.JSON').
+    then(response => setData(response.data));
+  },[]) 
   function navToLatestMovies() {
     nav('/latestmovies')
   }
@@ -26,9 +31,10 @@ export const Home = () => {
   //   nav(`/moviedetails/${moviedata}`)
   // }
   function navToMovieDetails(moviedata){
+    console.log(moviedata)
     // const arrayString = encodeURIComponent(JSON.stringify(moviedata))
     // nav(`/moviedetails/${moviedata}`)
-    nav('/moviedetails')
+   nav(`/moviedetails/${moviedata.Title}`, {state:{moviedata}})
    }
   return (
    
@@ -58,12 +64,12 @@ export const Home = () => {
       <div className="flex justify-center px-8">
      
         <div className="flex space-x-4">
-        {movies.map((item, index) => (
+        {data.slice(0,4).map((item, index) => (
         
         <div key = {index} className="text-center">
           <img src={ item.Images}  alt="Image 1" className="w-40 h-40 object-fill" />
-          <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded" onClick={navToMovieDetails}>
-            Book
+          <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded" onClick={() => navToMovieDetails(item)}>
+            Book  
           </button>
         </div>
 
