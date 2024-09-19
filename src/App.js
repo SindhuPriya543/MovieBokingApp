@@ -8,6 +8,8 @@ import { NearByEvents } from "./components/NearByEvents";
 import { UpcomingMovies } from "./components/UpcomingMovies";
 import { RecommendedMovies } from "./components/RecommendedMovies";
 import { MovieDetails } from "./components/MovieDetails";
+import { TicketBooking } from "./components/TicketBooking";
+import { FinalBooking } from "./components/FinalBooking";
 
 function App() {
   return (
@@ -33,6 +35,12 @@ function App() {
             {" "}
           </Route>
           <Route path="/moviedetails" element={<MovieDetails />}>
+            {" "}
+          </Route>
+          <Route path="/ticketbooking" element={<TicketBooking />}>
+            {" "}
+          </Route>
+          <Route path="/finalbooking" element={<FinalBooking />}>
             {" "}
           </Route>
         </Routes>

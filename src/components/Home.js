@@ -1,11 +1,8 @@
 import React from "react";
 import "../css/home.css";
-import transfomers from "../images/transfomers.png";
-import joker from "../images/joker.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-//import movies from '../apiData/movies.json'
 import MoviesImageSlider from "./MoviesImageSlider";
 
 export const Home = () => {
@@ -33,7 +30,7 @@ export const Home = () => {
 
   function navToMovieDetails(moviedata) {
     console.log(moviedata);
-    nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
+    nav("/moviedetails", { state: { moviedata } });
   }
 
   const images = [
@@ -69,18 +66,7 @@ export const Home = () => {
 
       <div className="mt-6">
         <h1 className="text-center text-3xl"> Movies Image Slider</h1>
-        {/* <div className="flex justify-center">
-          <div className="flex justify-center items-center h-full mt-2 mx-4">
-            <img
-              src={transfomers}
-              alt="Image"
-              className="w-100 h-72 object-cover"
-            />
-          </div>
-          <div className="flex justify-center items-center h-full mt-2">
-            <img src={joker} alt="Image" className="w-100 h-72 object-cover" />
-          </div>
-        </div> */}
+
         <MoviesImageSlider images={images} />
       </div>
 

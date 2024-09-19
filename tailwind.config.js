@@ -3,19 +3,20 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
-      width:{
-        '3/10':'30%',
-        '7/10' : '70%',
-        '5/10' : '50%'
+      width: {
+        "3/10": "30%",
+        "4/10": "40%",
+        "5/10": "50%",
+        "6/10": "60%",
+        "7/10": "70%",
       },
-      height :{
-        '4/10' :'40%'
+      height: {
+        "4/10": "40%",
       },
-      fontFamily :{
-        roboto : ['Roboto','sans-serif']
-      }
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
-
+};

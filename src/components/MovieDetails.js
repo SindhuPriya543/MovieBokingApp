@@ -1,13 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 export const MovieDetails = () => {
   // const [moviedata] = useParams();
+  const nav = useNavigate();
 
   const location = useLocation();
   const { moviedata } = location.state;
+
+  const NavToTicketBooking = () => {
+    nav("/ticketbooking");
+  };
 
   return (
     <div>
@@ -39,7 +44,10 @@ export const MovieDetails = () => {
         </div>
 
         <div className="flex justify-center">
-          <button className="mt-2 bg-[#58CCC9] text-black font-bold text-xl py-4 px-4 rounded cursor-pointer ">
+          <button
+            className="mt-2 bg-[#58CCC9] text-black font-bold text-xl py-4 px-4 rounded cursor-pointer "
+            onClick={NavToTicketBooking}
+          >
             Book Now
           </button>
         </div>
