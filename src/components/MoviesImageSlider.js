@@ -4,7 +4,7 @@ import leftarrow from "../images/arrow-left-3099.png"; // Replace with better ar
 import rightarrow from "../images/arrow-right-3098.png"; // Replace with better arrow image
 import "../css/home.css"; // Import custom CSS for scrollbar styling
 
-const MoviesImageSlider = ({ images }) => {
+const MoviesImageSlider = () => {
   const sliderRef = useRef(null);
   const imageRef = useRef(null); // Reference for the image
 
@@ -17,6 +17,12 @@ const MoviesImageSlider = ({ images }) => {
       });
     }
   };
+  const images = [
+    "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w",
+    "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg",
+    "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg",
+    "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp",
+  ];
 
   const scrollRight = () => {
     if (imageRef.current) {

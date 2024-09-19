@@ -33,12 +33,7 @@ export const Home = () => {
     nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
   }
 
-  const images = [
-    "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w",
-    "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg",
-    "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg",
-    "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp",
-  ];
+
 
   return (
     <Container className="mt-4">
@@ -76,7 +71,7 @@ export const Home = () => {
       <Row className="justify-content-center">
         <Col md={12}>
           {/* Full-width but only takes 30% height of the screen */}
-          <MoviesImageSlider images={images} style={{ height: "30vh" }} />
+          <MoviesImageSlider style={{ height: "30vh" }} />
         </Col>
       </Row>
 
