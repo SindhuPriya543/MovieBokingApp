@@ -1,12 +1,9 @@
-import React from "react";
-import "../css/home.css";
-import transfomers from "../images/transfomers.png";
-import joker from "../images/joker.png";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
-//import movies from '../apiData/movies.json'
 import MoviesImageSlider from "./MoviesImageSlider";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "../css/home.css"; // Custom CSS if needed
 
 export const Home = () => {
   const nav = useNavigate();
@@ -19,6 +16,7 @@ export const Home = () => {
       )
       .then((response) => setData(response.data));
   }, []);
+
   function navToLatestMovies() {
     nav("/movies");
   }
@@ -32,7 +30,6 @@ export const Home = () => {
   }
 
   function navToMovieDetails(moviedata) {
-    //console.log(moviedata);
     nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
   }
 
@@ -40,72 +37,75 @@ export const Home = () => {
     "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w",
     "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg",
     "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg",
-    "https://upload.wikimedia.org/wikipedia/en/1/18/Inception_OST.jpg",
-    "https://i.ytimg.com/vi/njPNg0A9VpY/sddefault.jpg",
     "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp",
   ];
+
   return (
-    <div className="mt-28">
-      <div className="flex justify-between gap-4 mt-[8.5rem] mx-4">
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToLatestMovies}
-        >
-          Latest Movies
-        </div>
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToUpcomingMovies}
-        >
-          Upcoming Movies
-        </div>
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToNearByEvents}
-        >
-          Near By Events
-        </div>
-      </div>
+    <Container className="mt-4">
+      {/* First Row for Latest Movies, Upcoming Movies, and Nearby Events */}
+      <Row className="text-center mb-4">
+        <Col md={4} >
+          <Button
+            className="w-100 p-4 bg-info text-white fw-bold btn-hover-effect"
+            onClick={navToLatestMovies}
+          >
+            Latest Movies
+          </Button>
+        </Col>
+        <Col md={4}>
+          <Button
+            className="w-100 p-4 bg-info text-white fw-bold btn-hover-effect"
+            onClick={navToUpcomingMovies}
+          >
+            Upcoming Movies
+          </Button>
+        </Col>
+        <Col md={4}>
+          <Button
+            className="w-100 p-4 bg-info text-white fw-bold btn-hover-effect"
+            onClick={navToNearByEvents}
+          >
+            Nearby Events
+          </Button>
+        </Col>
+      </Row>
 
-      <div className="mt-6">
-        <h1 className="text-center text-3xl"> Movies Image Slider</h1>
-        {/* <div className="flex justify-center">
-          <div className="flex justify-center items-center h-full mt-2 mx-4">
+      {/* Movies Image Slider */}
+
+
+      <Row className="justify-content-center">
+        <Col md={12}>
+          {/* Full-width but only takes 30% height of the screen */}
+          <MoviesImageSlider images={images} style={{ height: "30vh" }} />
+        </Col>
+      </Row>
+
+      <hr className="my-4" />
+
+      {/* Recommended Movies */}
+      <Row className="mb-4">
+        <Col>
+          <h1 className="text-center">Recommended Movies</h1>
+        </Col>
+      </Row>
+
+      <Row className="justify-content-center">
+        {data.slice(1, 5).map((item, index) => (
+          <Col key={index} md={3} className="text-center mb-4">
             <img
-              src={transfomers}
-              alt="Image"
-              className="w-100 h-72 object-cover"
+              src={item.Images}
+              alt="Movie Image"
+              className="w-100 h-auto mb-2"
             />
-          </div>
-          <div className="flex justify-center items-center h-full mt-2">
-            <img src={joker} alt="Image" className="w-100 h-72 object-cover" />
-          </div>
-        </div> */}
-        <MoviesImageSlider images={images} />
-      </div>
-
-      <hr className="border border-black mt-10" />
-      <h1 className="text-center mt-2 text-3xl">Recommended Movies</h1>
-
-      <div className="flex justify-center px-8 mt-2">
-        <div className="flex space-x-4">
-          {data.slice(1, 5).map((item, index) => (
-            <div key={index} className="text-center">
-              <img
-                src={item.Images}
-                alt="Movie Image"
-                className="w-40 h-40 object-fill"
-              />
-              <button
-                className="mt-2 bg-[#4CBEB6] text-black font-bold py-2 px-4 rounded"
-                onClick={() => navToMovieDetails(item)}
-              >
-                Book
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+            <Button
+              className="w-100 bg-success text-white"
+              onClick={() => navToMovieDetails(item)}
+            >
+              Book
+            </Button>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };

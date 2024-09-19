@@ -1,0 +1,19 @@
+.btn-hover-effect {
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-hover-effect:hover {
+    background-color: #17a2b8; /* Change the background color on hover */
+    color: #fff; /* Ensure the text stays white */
+  }
+
+  /* Hide scrollbar for WebKit browsers */
+.d-flex::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+  }
+  
+  /* Hide scrollbar for other browsers */
+  .d-flex {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
