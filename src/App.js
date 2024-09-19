@@ -12,18 +12,19 @@ import { MovieDetails } from "./components/MovieDetails";
 function App() {
   return (
     <div>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
           </Route>
-          <Route path="/latestmovies" element={<LatestMovies />}>
+          <Route path="/movies" element={<LatestMovies />}>
             {" "}
           </Route>
-          <Route path="/nearbyevents" element={<NearByEvents />}>
+          <Route path="/events" element={<NearByEvents />}>
             {" "}
           </Route>
-          <Route path="/upcomingmovies" element={<UpcomingMovies />}>
+          <Route path="/newmovies" element={<UpcomingMovies />}>
             {" "}
           </Route>
           <Route path="/recmovies" element={<RecommendedMovies />}>
@@ -37,7 +38,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      <Header />
+
     </div>
   );
 }

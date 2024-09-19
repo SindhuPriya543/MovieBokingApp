@@ -1,30 +1,57 @@
-import React from "react";
-import cineflix_logo from "../images/cineflix_logo.png";
-import user_logo from "../images/user_logo.png";
+// Navbar.js
+import React from 'react';
+import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from "../images/logo.jpeg";
+import userLogo from "../images/user.png"; // Ensure you have the correct path
 
 export const Header = () => {
-  return (
-    <header className="fixed top-0 w-full h-28 bg-[#FFA2A0] bg-opacity-75">
-      <div className="container mx-auto mt-5 flex items-center">
-        <div>
-          <img src={cineflix_logo} className="w-[14rem]" />
-        </div>
-        <div className="ml-auto flex items-center">
-          <input
-            type="text"
-            placeholder="Search"
-            className="w-[22rem] h-[3.5rem] bg-neutral-400 bg-opacity-75 px-[1.5rem] py-1 
-            outline-none border-none rounded-[70px] placeholder-white placeholder:text-[1.35rem] "
-          />
+  // const nav = useNavigate();
+  // function navToLatestMovies() {
+  //   nav("/latestmovies");
+  // }
 
-          <div className="w-[3.5rem] h-[3.5rem] ml-4">
-            <img
-              src={user_logo}
-              className="rounded-full cursor-pointer w-full h-full"
-            />
-          </div>
-        </div>
-      </div>
-    </header>
+  // function navToUpcomingMovies() {
+  //   nav("/upcomingmovies");
+  // }
+
+  // function navToNearByEvents() {
+  //   nav("/nearbyevents");
+  // }
+  return (
+    <Navbar bg="light" expand="lg" sticky="top">
+      <Container>
+        <Navbar.Brand href="#home">
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: '150px', height: '50px' }}
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="movies">Movies</Nav.Link>
+            <Nav.Link href="events">Events</Nav.Link>
+            <Nav.Link href="#section4">Contact</Nav.Link>
+          </Nav>
+          <Form inline className="d-flex ms-auto">
+            <FormControl type="text" placeholder="Search" className="me-2" />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+          <Nav>
+            <Nav.Link href="#user-profile">
+              <img
+                src={userLogo}
+                alt="User"
+                style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+              />
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };

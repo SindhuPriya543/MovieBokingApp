@@ -20,19 +20,19 @@ export const Home = () => {
       .then((response) => setData(response.data));
   }, []);
   function navToLatestMovies() {
-    nav("/latestmovies");
+    nav("/movies");
   }
 
   function navToUpcomingMovies() {
-    nav("/upcomingmovies");
+    nav("/newmovies");
   }
 
   function navToNearByEvents() {
-    nav("/nearbyevents");
+    nav("/events");
   }
 
   function navToMovieDetails(moviedata) {
-    console.log(moviedata);
+    //console.log(moviedata);
     nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
   }
 
