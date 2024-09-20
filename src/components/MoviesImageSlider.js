@@ -1,12 +1,39 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import leftarrow from "../images/arrow-left-3099.png"; // Replace with better arrow image
 import rightarrow from "../images/arrow-right-3098.png"; // Replace with better arrow image
 import "../css/home.css"; // Import custom CSS for scrollbar styling
 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataParallel1 } from '../redux/actions';
+
 const MoviesImageSlider = () => {
   const sliderRef = useRef(null);
   const imageRef = useRef(null); // Reference for the image
+
+  const dispatch = useDispatch();
+  const { loading, dataA, dataB, error } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchDataParallel1());
+  }, [dispatch]);
+
+
+
+  if (loading) return <p>Loading...</p>;
+  if (error) {
+    const parsedError = JSON.parse(error); // Parse error if needed
+    return (
+      <div>
+        <p>Error: {parsedError.message}</p>
+        <p>URL: {parsedError.url}</p>
+        <p>Method: {parsedError.method}</p>
+        <p>Status: {parsedError.status}</p>
+        <p>Response: {JSON.stringify(parsedError.response, null, 2)}</p>
+      </div>
+    );
+  }
+
 
   const scrollLeft = () => {
     if (imageRef.current) {
@@ -59,6 +86,7 @@ const MoviesImageSlider = () => {
             className="d-flex overflow-hidden"
             style={{ scrollBehavior: "smooth", height: "30vh", whiteSpace: "nowrap" }}
           >
+            {/* {JSON.stringify(dataA, null, 2)} */}
             {images.map((image, index) => (
               <img
                 key={index}
@@ -97,3 +125,5 @@ const MoviesImageSlider = () => {
 };
 
 export default MoviesImageSlider;
+
+

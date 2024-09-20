@@ -1,0 +1,20 @@
+{
+  "posts": [
+    { "id": 1, "title": "Post 1", "content": "This is the first post" },
+    { "id": 2, "title": "Post 2", "content": "This is the second post" }
+  ],
+  "users": [
+    { "id": 1, "name": "John Doe" },
+    { "id": 2, "name": "Jane Doe" }
+  ],
+  "comments": [
+    { "id": 1, "postId": 1, "content": "Nice post!" },
+    { "id": 2, "postId": 2, "content": "Great work!" }
+  ],
+  "images" : [
+  {"url" : "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w"},
+  {"url" :  "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg"},
+  {"url" : "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg"},
+  {"url" : "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp"}
+  ]
+}
