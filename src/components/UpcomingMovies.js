@@ -1,52 +1,74 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Button, Container, Row, Col, Spinner, Alert, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataParallel1 } from '../redux/actions';
 
 export const UpcomingMovies = () => {
+
   const nav = useNavigate();
-  const [data, setData] = useState([]);
+
+  const dispatch = useDispatch();
+  const { loading, dataA, dataB, error } = useSelector((state) => state);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://gist.githubusercontent.com/saniyusuf/406b843afdfb9c6a86e25753fe2761f4/raw/523c324c7fcc36efab8224f9ebb7556c09b69a14/Film.JSON"
-      )
-      .then((response) => setData(response.data));
-  }, []);
+    dispatch(fetchDataParallel1());
+  }, [dispatch]);
 
-  function navToMovieDetails() {
-    // const arrayString = encodeURIComponent(JSON.stringify(moviedata))
-    // nav(`/moviedetails/${moviedata}`)
-    //nav('/moviedetails')
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
+  if (error) {
+    const parsedError = JSON.parse(error); // Parse error if needed
+    return (
+      <Container>
+        <Alert variant="danger" className="mt-4">
+          <Alert.Heading>Error: {parsedError.message}</Alert.Heading>
+          <p>URL: {parsedError.url}</p>
+          <p>Method: {parsedError.method}</p>
+          <p>Status: {parsedError.status}</p>
+          <p>Response: {JSON.stringify(parsedError.response, null, 2)}</p>
+        </Alert>
+      </Container>
+    );
+  }
+
+
+  function navToMovieDetails(moviedata) {
+    nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
   }
 
   return (
-    <div>
-      <div className="pt-28">
-        <h1 className="text-center mt-2 text-3xl">Upcoming Movies</h1>
-        <hr className="border border-black mt-2" />
+    <Container className="pt-5">
+      <h1 className="text-center mt-4">Upcoming Movies</h1>
+      <hr />
 
-        <div className="flex justify-center mt-4">
-          <div className="grid grid-cols-5 gap-4">
-            {data.map((item, index) => (
-              <div key={index} className="text-center">
-                <img
-                  src={item.Images}
-                  alt="Image 1"
-                  className="w-[14em] h-[20em] object-fill"
-                />
-                <button
-                  className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
-                  onClick={navToMovieDetails()}
-                >
-                  Book
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+      <Row className="justify-content-center">
+        {dataB && dataB.length > 0 ? (dataB.map((item, index) =>
+          <Col key={index} md={3} className="text-center mb-4">
+            <img
+              src={item.Images}
+              alt="Movie Image"
+              className="w-100 h-auto mb-2"
+            />
+            <Button
+              className="w-100 bg-success text-white"
+              onClick={() => navToMovieDetails(item)}
+            >
+              View Details
+            </Button>
+          </Col>
+        )) : (
+          <p>No images found.</p>
+        )}
+      </Row>
+    </Container>
   );
 };

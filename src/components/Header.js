@@ -33,8 +33,8 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="movies">Movies</Nav.Link>
-            <Nav.Link href="events">Events</Nav.Link>
+            <Nav.Link href="/movies">Movies</Nav.Link>
+            <Nav.Link href="/events">Events</Nav.Link>
             <Nav.Link href="#section4">Contact</Nav.Link>
           </Nav>
           <Form inline className="d-flex ms-auto">

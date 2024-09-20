@@ -1,39 +1,69 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Button, Container, Row, Col, Spinner, Alert, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataParallel1 } from '../redux/actions';
 
 export const NearByEvents = () => {
-  const [eventData, setEventData] = useState([]);
+
+  const nav = useNavigate();
+
+  const dispatch = useDispatch();
+  const { loading, dataA, dataB, error } = useSelector((state) => state);
 
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/recipes")
-      .then((response) => setEventData(response.data));
-  }, []);
+    dispatch(fetchDataParallel1());
+  }, [dispatch]);
 
-  console.log(eventData.recipes);
-  return (
-    <div className="pt-28">
-      <h1 className="text-center text-3xl"> Events </h1>
-      <hr className="border border-black mt-2" />
-
-      <div className="flex justify-center mt-4">
-        <div className="grid grid-cols-5 gap-4">
-          {eventData.recipes && eventData.recipes.length > 0 ? (
-            eventData.recipes.map((item, index) => (
-              <div key={index} className="text-center">
-                <img
-                  src={item.image}
-                  alt="Image 1"
-                  className="w-[14em] h-[20em] object-fill"
-                />
-              </div>
-            ))
-          ) : (
-            <h1 className="text-3xl text-center">Loading...</h1>
-          )}
-        </div>
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       </div>
-    </div>
+    );
+  }
+
+  if (error) {
+    const parsedError = JSON.parse(error); // Parse error if needed
+    return (
+      <Container>
+        <Alert variant="danger" className="mt-4">
+          <Alert.Heading>Error: {parsedError.message}</Alert.Heading>
+          <p>URL: {parsedError.url}</p>
+          <p>Method: {parsedError.method}</p>
+          <p>Status: {parsedError.status}</p>
+          <p>Response: {JSON.stringify(parsedError.response, null, 2)}</p>
+        </Alert>
+      </Container>
+    );
+  }
+
+
+  function navToMovieDetails(moviedata) {
+    nav(`/moviedetails/${moviedata.Title}`, { state: { moviedata } });
+  }
+
+  return (
+    <Container className="pt-5">
+      <h1 className="text-center mt-4">Near by Events</h1>
+      <hr />
+
+      <Row className="justify-content-center">
+        {dataB && dataB.length > 0 ? (dataB.map((item, index) =>
+          <Col key={index} md={3} className="text-center mb-4">
+            <img
+              src={item.Images}
+              alt="Movie Image"
+              className="w-100 h-auto mb-2"
+            />
+
+          </Col>
+        )) : (
+          <p>No images found.</p>
+        )}
+      </Row>
+    </Container>
   );
 };

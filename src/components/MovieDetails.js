@@ -1,49 +1,88 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { Container, Row, Col, Button, Image, Card } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const MovieDetails = () => {
-  // const [moviedata] = useParams();
-
   const location = useLocation();
   const { moviedata } = location.state;
+  const nav = useNavigate();
+
+
+  function NavToTicketBooking(moviedata) {
+    nav(`/ticketbooking/${moviedata.Title}`, { state: { moviedata } });
+  }
 
   return (
-    <div>
-      <div className="pt-48 px-40">
-        <div className="w-full h-96 flex border border-gray-500">
-          <div className="w-3/10 border flex justify-center items-center border-gray-500">
-            <img src={moviedata.Images} className="w-[36rem] h-[24rem]" />
-          </div>
-          <div className="w-7/10">
-            <div className="w-full h-1/3 flex border  border-gray-500">
-              <div className="w-5/10 border border-gray-500 font-roboto text-4xl flex justify-center items-center">
-                {moviedata.Title}{" "}
-              </div>
+    <Container className="pt-5">
+      <h1 className="text-center mt-4">Movie Details</h1>
+      <hr />
+      <Row className="my-5">
+        <Col md={4} className="d-flex justify-content-center align-items-center">
+          <Image src={moviedata.Images} fluid style={{ height: "24rem" }} />
+        </Col>
+        <Col md={8}>
 
-              <div className="w-5/10 border border-gray-500 font-roboto text-4xl flex justify-center items-center">
-                {" "}
-                {moviedata.Released}
-              </div>
-            </div>
-            <div className="h-1/3 border border-gray-500 font-roboto text-4xl flex justify-center items-center">
-              Duration :{moviedata.Runtime}{" "}
-            </div>
+          <Card className="mb-3">
 
-            <div className="h-1/3 border border-gray-500 font-roboto text-4xl flex justify-center items-center">
-              {" "}
-              Rating : {moviedata.imdbRating}{" "}
-            </div>
-          </div>
-        </div>
+            <Card.Body >
+              <Row >
+                <Col md={6}>
+                  <h3>Movie Name:</h3>
+                </Col>
+                <Col md={6}>
+                  <h3>{moviedata.Title}</h3>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+          <Card className="mb-3">
+            <Card.Body>
+              <Row >
+                <Col md={6}>
+                  <h3>Released:</h3>
+                </Col>
+                <Col md={6}>
+                  <h3>{moviedata.Released}</h3>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
 
-        <div className="flex justify-center">
-          <button className="mt-2 bg-[#58CCC9] text-black font-bold text-xl py-4 px-4 rounded cursor-pointer ">
-            Book Now
-          </button>
-        </div>
-      </div>
-    </div>
+          <Card className="mb-3">
+            <Card.Body>
+              <Row >
+                <Col md={6}>
+                  <h3>Duration:</h3>
+                </Col>
+                <Col md={6}>
+                  <h3>{moviedata.Runtime}</h3>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+
+          <Card className="mb-3">
+            <Card.Body >
+              <Row >
+                <Col md={6}>
+                  <h3>Rating:</h3>
+                </Col>
+                <Col md={6}>
+                  <h3>{moviedata.imdbRating}</h3>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+
+
+      </Row >
+
+      <Row className="justify-content-center">
+        <Button variant="primary" size="lg" className="mt-3" onClick={() => NavToTicketBooking(moviedata)}>
+          Book Now
+        </Button>
+      </Row>
+    </Container >
   );
 };

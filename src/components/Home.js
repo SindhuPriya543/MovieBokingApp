@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import MoviesImageSlider from "./MoviesImageSlider";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "../css/home.css"; // Custom CSS if needed
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataParallel1 } from '../redux/actions';
 
 export const Home = () => {
   const nav = useNavigate();
-  const [data, setData] = useState([]);
+
+
+  const dispatch = useDispatch();
+  const { loading, dataA, dataB, error } = useSelector((state) => state);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://gist.githubusercontent.com/saniyusuf/406b843afdfb9c6a86e25753fe2761f4/raw/523c324c7fcc36efab8224f9ebb7556c09b69a14/Film.JSON"
-      )
-      .then((response) => setData(response.data));
-  }, []);
+    dispatch(fetchDataParallel1());
+  }, [dispatch]);
+
+
+  if (loading) return <p>Loading...</p>;
+  if (error) {
+    const parsedError = JSON.parse(error); // Parse error if needed
+    return (
+      <div>
+        <p>Error: {parsedError.message}</p>
+        <p>URL: {parsedError.url}</p>
+        <p>Method: {parsedError.method}</p>
+        <p>Status: {parsedError.status}</p>
+        <p>Response: {JSON.stringify(parsedError.response, null, 2)}</p>
+      </div>
+    );
+  }
 
   function navToLatestMovies() {
     nav("/movies");
@@ -71,7 +86,7 @@ export const Home = () => {
       <Row className="justify-content-center">
         <Col md={12}>
           {/* Full-width but only takes 30% height of the screen */}
-          <MoviesImageSlider style={{ height: "30vh" }} />
+          <MoviesImageSlider dataA={dataA} style={{ height: "30vh" }} />
         </Col>
       </Row>
 
@@ -85,7 +100,7 @@ export const Home = () => {
       </Row>
 
       <Row className="justify-content-center">
-        {data.slice(1, 5).map((item, index) => (
+        {dataB && dataB.length > 0 ? (dataB.map((item, index) =>
           <Col key={index} md={3} className="text-center mb-4">
             <img
               src={item.Images}
@@ -96,10 +111,12 @@ export const Home = () => {
               className="w-100 bg-success text-white"
               onClick={() => navToMovieDetails(item)}
             >
-              Book
+              View Details
             </Button>
           </Col>
-        ))}
+        )) : (
+          <p>No images found.</p>
+        )}
       </Row>
     </Container>
   );
