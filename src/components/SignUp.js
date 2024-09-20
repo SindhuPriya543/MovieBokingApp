@@ -13,7 +13,7 @@ export const SignUp = () => {
 
     sessionStorage.setItem("sessionUsername", JSON.stringify(username));
     sessionStorage.setItem("sessionPassword", JSON.stringify(password));
-    nav("/");
+    nav("/signin");
   };
 
   return (

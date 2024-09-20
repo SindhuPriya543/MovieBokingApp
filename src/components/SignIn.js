@@ -17,7 +17,7 @@ export const SignIn = () => {
       sessionStorage.getItem("sessionPassword")
     );
     if (storedUserName === username && storedPassword === password) {
-      nav("/home");
+      nav("/");
     } else {
       alert("Invalid Username or Password");
     }
@@ -58,7 +58,7 @@ export const SignIn = () => {
             <button className="bg-[#FFA2A0] w-full h-10 rounded-full text-white font-semibold hover:bg-red-400 duration-300">
               LOGIN
             </button>
-            <p className="text-end mt-1">
+            <p className="text-end mt-1 hover:text-blue-600">
               <Link to="/forgot">Forgot Password ?</Link>
             </p>
           </div>

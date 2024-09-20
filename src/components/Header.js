@@ -8,6 +8,7 @@ export const Header = () => {
   const navToLoginPage = () => {
     nav("/signin");
   };
+
   return (
     <header className="fixed top-0 w-full h-28 bg-[#FFA2A0] bg-opacity-75">
       <div className="  mt-5 mx-[4rem] flex justify-center">
