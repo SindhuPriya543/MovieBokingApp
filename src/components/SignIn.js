@@ -9,13 +9,14 @@ export const SignIn = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
 
-    const storedUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+    const storedUserName = JSON.parse(
+      sessionStorage.getItem("sessionUsername")
+    );
 
-    if (
-      storedUserDetails &&
-      storedUserDetails.username === username &&
-      storedUserDetails.password === password
-    ) {
+    const storedPassword = JSON.parse(
+      sessionStorage.getItem("sessionPassword")
+    );
+    if (storedUserName === username && storedPassword === password) {
       nav("/home");
     } else {
       alert("Invalid Username or Password");
@@ -57,7 +58,9 @@ export const SignIn = () => {
             <button className="bg-[#FFA2A0] w-full h-10 rounded-full text-white font-semibold hover:bg-red-400 duration-300">
               LOGIN
             </button>
-            <p className="text-end mt-1">Forgot Password ?</p>
+            <p className="text-end mt-1">
+              <Link to="/forgot">Forgot Password ?</Link>
+            </p>
           </div>
           <div>
             <p className="text-zinc-400">

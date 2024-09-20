@@ -6,11 +6,13 @@ export const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [sessionUsername, setSessionUsername] = useState("");
+  const [sessionPassword, setSessionPassword] = useState("");
   const handleSignUp = (e) => {
     e.preventDefault();
-    const userDetails = { username, password };
 
-    sessionStorage.setItem("userDetails", JSON.stringify(userDetails));
+    sessionStorage.setItem("sessionUsername", JSON.stringify(username));
+    sessionStorage.setItem("sessionPassword", JSON.stringify(password));
     nav("/");
   };
 
@@ -55,7 +57,7 @@ export const SignUp = () => {
             <p className="text-zinc-500">
               Already Account Exists ?
               <span className="text-black font-bold underline underline-offset-2">
-                <Link to="/"> SignIn </Link>
+                <Link to="/signin"> SignIn </Link>
               </span>
             </p>
           </div>

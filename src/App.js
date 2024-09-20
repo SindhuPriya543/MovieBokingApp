@@ -11,6 +11,7 @@ import { TicketBooking } from "./components/TicketBooking";
 import { FinalBooking } from "./components/FinalBooking";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
+import { ForgotComponent } from "./components/ForgotComponent";
 
 function App() {
   //const location = useLocation();
@@ -18,38 +19,31 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignIn />}>
+          <Route path="/signin" element={<SignIn />}>
             {" "}
           </Route>
-          <Route path="/signup" element={<SignUp />}>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/" element={<Home />}>
             {" "}
           </Route>
-          <Route path="/home" element={<Home />}>
-            {" "}
-          </Route>
-          <Route path="/latestmovies" element={<LatestMovies />}>
-            {" "}
-          </Route>
+          <Route path="/latestmovies" element={<LatestMovies />}></Route>
           <Route path="/nearbyevents" element={<NearByEvents />}>
             {" "}
           </Route>
           <Route path="/upcomingmovies" element={<UpcomingMovies />}>
             {" "}
           </Route>
-          <Route path="/recmovies" element={<RecommendedMovies />}>
-            {" "}
-          </Route>
+          <Route path="/recmovies" element={<RecommendedMovies />}></Route>
           <Route path="/moviedetails" element={<MovieDetails />}>
             {" "}
           </Route>
-          <Route path="/ticketbooking" element={<TicketBooking />}>
-            {" "}
-          </Route>
-          <Route path="/finalbooking" element={<FinalBooking />}>
-            {" "}
-          </Route>
+          <Route path="/ticketbooking" element={<TicketBooking />}></Route>
+          <Route path="/finalbooking" element={<FinalBooking />}></Route>
+          <Route path="/forgot" element={<ForgotComponent />}></Route>
         </Routes>
+        <Header />
       </BrowserRouter>
+
       {/* {location.pathname !== "/" && <Header />} */}
     </div>
   );
