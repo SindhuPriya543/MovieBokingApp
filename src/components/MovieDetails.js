@@ -11,13 +11,13 @@ export const MovieDetails = () => {
   const { moviedata } = location.state;
 
   const NavToTicketBooking = () => {
-    nav("/ticketbooking");
+    nav("/ticketbooking", { state: { moviedata } });
   };
 
   return (
     <div>
-      <div className="pt-48 px-40">
-        <div className="w-full h-96 flex border border-gray-500">
+      <div className="pt-48">
+        <div className="w-[100rem] h-96 ml-[45rem] mt-[5rem] flex border border-gray-500">
           <div className="w-3/10 border flex justify-center items-center border-gray-500">
             <img src={moviedata.Images} className="w-[36rem] h-[24rem]" />
           </div>

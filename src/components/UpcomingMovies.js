@@ -15,30 +15,29 @@ export const UpcomingMovies = () => {
       .then((response) => setData(response.data));
   }, []);
 
-  function navToMovieDetails() {
-    // const arrayString = encodeURIComponent(JSON.stringify(moviedata))
-    // nav(`/moviedetails/${moviedata}`)
-    //nav('/moviedetails')
+  function navToUpcomingMovieDetails(moviedata) {
+    console.log(moviedata);
+    nav("/moviedetails", { state: { moviedata } });
   }
 
   return (
     <div>
       <div className="pt-28">
-        <h1 className="text-center mt-2 text-3xl">Upcoming Movies</h1>
-        <hr className="border border-black mt-2" />
+        <h1 className="text-center mt-6 text-4xl">Upcoming Movies</h1>
+        <hr className="border border-gray-400 mt-2" />
 
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-6">
           <div className="grid grid-cols-5 gap-4">
-            {data.map((item, index) => (
+            {data.slice(5, 15).map((item, index) => (
               <div key={index} className="text-center">
                 <img
                   src={item.Images}
-                  alt="Image 1"
+                  alt="Movie"
                   className="w-[14em] h-[20em] object-fill"
                 />
                 <button
-                  className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
-                  onClick={navToMovieDetails()}
+                  className="mt-2 bg-[#58CCC9] text-black font-bold text-xl py-4 px-4 rounded cursor-pointer "
+                  onClick={() => navToUpcomingMovieDetails(item)}
                 >
                   Book
                 </button>

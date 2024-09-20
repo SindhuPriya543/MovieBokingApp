@@ -17,7 +17,7 @@ const MoviesImageSlider = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full max-w-[70rem] mx-auto">
+    <div className="relative w-full max-w-[50rem] mx-auto">
       <button
         onClick={goToPrevious}
         className="absolute  left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full"
@@ -27,7 +27,7 @@ const MoviesImageSlider = ({ images }) => {
       <img
         src={images[currentIndex]}
         alt={`Slide ${currentIndex}`}
-        className="w-[70rem] h-[40rem] mr-10 object-fill rounded"
+        className="w-[50rem] h-[30rem] object-fill rounded"
       />
 
       <button

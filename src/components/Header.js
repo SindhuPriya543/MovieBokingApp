@@ -5,11 +5,11 @@ import user_logo from "../images/user_logo.png";
 export const Header = () => {
   return (
     <header className="fixed top-0 w-full h-28 bg-[#FFA2A0] bg-opacity-75">
-      <div className="container mx-auto mt-5 flex items-center">
+      <div className="  mt-5 mx-[4rem] flex justify-center">
         <div>
           <img src={cineflix_logo} className="w-[14rem]" />
         </div>
-        <div className="ml-auto flex items-center">
+        <div className="ml-auto mt-[0.5rem] flex justify-between">
           <input
             type="text"
             placeholder="Search"

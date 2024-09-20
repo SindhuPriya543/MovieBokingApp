@@ -1,12 +1,14 @@
 import React from "react";
 import "../css/home.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MoviesImageSlider from "./MoviesImageSlider";
+import { Header } from ".//Header";
 
 export const Home = () => {
   const nav = useNavigate();
+  const location = useLocation();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -42,54 +44,57 @@ export const Home = () => {
     "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp",
   ];
   return (
-    <div className="mt-28">
-      <div className="flex justify-between gap-4 mt-[8.5rem] mx-4">
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToLatestMovies}
-        >
-          Latest Movies
+    <div>
+      {location.pathname !== "/" && <Header />}
+      <div className="mt-28">
+        <div className="flex justify-between gap-4 mt-[8.5rem] mx-4">
+          <div
+            className="w-1/3 h-40 bg-[#58CCC9] rounded-md text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
+            onClick={navToLatestMovies}
+          >
+            Latest Movies
+          </div>
+          <div
+            className="w-1/3 h-40 bg-[#58CCC9] rounded-md text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
+            onClick={navToUpcomingMovies}
+          >
+            Upcoming Movies
+          </div>
+          <div
+            className="w-1/3 h-40 bg-[#58CCC9] rounded-md text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
+            onClick={navToNearByEvents}
+          >
+            Near By Events
+          </div>
         </div>
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToUpcomingMovies}
-        >
-          Upcoming Movies
+
+        <div className="mt-6">
+          <MoviesImageSlider images={images} />
         </div>
-        <div
-          className="w-1/3 h-40 bg-[#58CCC9] text-black font-bold flex items-center justify-center text-5xl cursor-pointer"
-          onClick={navToNearByEvents}
-        >
-          Near By Events
-        </div>
-      </div>
 
-      <div className="mt-6">
-        <h1 className="text-center text-3xl"> Movies Image Slider</h1>
+        {/* <hr className="border border-gray-300 mt-10" /> */}
+        <h1 className="text-center mt-[5rem] text-4xl font-bold">
+          Recommended Movies
+        </h1>
 
-        <MoviesImageSlider images={images} />
-      </div>
-
-      <hr className="border border-black mt-10" />
-      <h1 className="text-center mt-2 text-3xl">Recommended Movies</h1>
-
-      <div className="flex justify-center px-8 mt-2">
-        <div className="flex space-x-4">
-          {data.slice(1, 5).map((item, index) => (
-            <div key={index} className="text-center">
-              <img
-                src={item.Images}
-                alt="Movie Image"
-                className="w-40 h-40 object-fill"
-              />
-              <button
-                className="mt-2 bg-[#4CBEB6] text-black font-bold py-2 px-4 rounded"
-                onClick={() => navToMovieDetails(item)}
-              >
-                Book
-              </button>
-            </div>
-          ))}
+        <div className="flex justify-center px-8 mt-3">
+          <div className="flex space-x-4">
+            {data.slice(1, 5).map((item, index) => (
+              <div key={index} className="text-center">
+                <img
+                  src={item.Images}
+                  alt="Movie"
+                  className="w-80 h-80 object-fill"
+                />
+                <button
+                  className="mt-2 bg-[#4CBEB6] texl-xl text-black font-bold w-[10rem] py-2 px-2 rounded"
+                  onClick={() => navToMovieDetails(item)}
+                >
+                  Book
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
