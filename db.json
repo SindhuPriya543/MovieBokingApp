@@ -14,11 +14,15 @@
   "users": [
     {
       "id": 1,
-      "name": "John Doe"
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "123456"
     },
     {
-      "id": 2,
-      "name": "Jane Doe"
+      "id": "07af",
+      "name": "RAHUL BATU",
+      "email": "rahulbatu@gmail.com",
+      "password": "1234567890"
     }
   ],
   "comments": [

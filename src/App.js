@@ -10,7 +10,9 @@ import { RecommendedMovies } from "./components/RecommendedMovies";
 import { MovieDetails } from "./components/MovieDetails";
 import { TicketBooking } from "./components/TicketBooking";
 import { FinalBooking } from "./components/FinalBooking";
-
+import { SignIn } from "./components/auth/Signin";
+import { Register } from "./components/auth/Register";
+import ProtectedRoute from './components/auth//ProtectedRoute';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
+            {" "}
+          </Route>
+          <Route path="/home" element={<Home />}>
             {" "}
           </Route>
           <Route path="/movies" element={<LatestMovies />}>
@@ -39,10 +44,31 @@ function App() {
           <Route path="/moviedetails" element={<MovieDetails />}>
             {" "}
           </Route>
-          <Route path="/ticketbooking/:title" element={<TicketBooking />}>
+          <Route path="/ticketbooking/:title" element={
+            <ProtectedRoute>
+              <TicketBooking />
+            </ProtectedRoute>
+          } >
             {" "}
           </Route>
-          <Route path="/finalbooking" element={<FinalBooking />}>
+          <Route path="/finalbooking" element={
+            <ProtectedRoute>
+              <FinalBooking />
+            </ProtectedRoute>
+          } >
+            {" "}
+          </Route>
+          <Route path="/posts" element={
+            <ProtectedRoute>
+              <FinalBooking />
+            </ProtectedRoute>
+          } >
+            {" "}
+          </Route>
+          <Route path="/login" element={<SignIn />}>
+            {" "}
+          </Route>
+          <Route path="/register" element={<Register />}>
             {" "}
           </Route>
         </Routes>

@@ -9,7 +9,7 @@ export const LatestMovies = () => {
   const nav = useNavigate();
 
   const dispatch = useDispatch();
-  const { loading, dataA, dataB, error } = useSelector((state) => state);
+  const { loading, dataA, dataB, error } = useSelector((state) => state.api);
 
   useEffect(() => {
     dispatch(fetchDataParallel1());

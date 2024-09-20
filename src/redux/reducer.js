@@ -14,7 +14,7 @@ const initialState = {
 };
 
 // Reducer
-const dataReducer = (state = initialState, action) => {
+export const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATA_REQUEST:
       return { ...state, loading: true, error: null };
@@ -26,10 +26,9 @@ const dataReducer = (state = initialState, action) => {
         dataB: action.payload.dataB
       };
     case FETCH_DATA_FAILURE:
-      return { ...state, loading: false, error: JSON.stringify(action.payload,null,2) };
+      return { ...state, loading: false, error: JSON.stringify(action.payload, null, 2) };
     default:
       return state;
   }
 };
 
-export default dataReducer;

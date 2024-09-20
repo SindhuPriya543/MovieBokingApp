@@ -8,14 +8,14 @@ export const FinalBooking = () => {
   const { moviedata, selectedSeats, selectedTime, selectedDate } = location.state;
   console.log(selectedDate);
   // Create a string with the ticket information
-  const ticketInfo = `
-    Movie: ${moviedata.Title}
-    Date: ${selectedDate.toLocaleDateString()}
-    Time: ${selectedTime}
-    Seats: ${selectedSeats}
-    Location: "Bhubaneswar"
-    Booking ID: "TLAHEAU"
-  `;
+  const ticketInfo = {
+    movieName: moviedata.Title,
+    date: selectedDate.toLocaleDateString(),
+    time: selectedTime,
+    seats: selectedSeats,
+    location: "Bhubaneswar",
+  };
+
 
   return (
     <Container className="mt-5">
