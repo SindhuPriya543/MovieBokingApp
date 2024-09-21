@@ -9,9 +9,9 @@ const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 // Action Creators
-export const loginSuccess = (token) => ({
+export const loginSuccess = (user, token) => ({
     type: LOGIN_SUCCESS,
-    payload: token,
+    payload: { user, token },
 });
 
 export const loginFailure = (error) => ({
@@ -49,9 +49,10 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
 
             // Store token in localStorage
             localStorage.setItem('token', fakeToken);
+            localStorage.setItem('user', JSON.stringify(user));
 
             // Dispatch login success
-            dispatch(loginSuccess(fakeToken));
+            dispatch(loginSuccess(user, fakeToken));
         } else {
             dispatch(loginFailure('Invalid credentials'));
         }
@@ -61,6 +62,7 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
 };
 
 export const logoutUser = () => (dispatch) => {
-    localStorage.removeItem('token'); // Clear the token from localStorage
+    localStorage.removeItem('token'); // Clear token from localStorage
+    localStorage.removeItem('user');  // Clear user from localStorage
     dispatch({ type: 'LOGOUT' });
 };

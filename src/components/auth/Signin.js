@@ -11,10 +11,28 @@ export const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // State to handle success message
+    const [message, setMessage] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
-        dispatch(loginUser({ email, password }));
+        dispatch(loginUser({ email, password }))
+            .then((response) => {
+                if (response && response.type === 'LOGIN_SUCCESS') {
+                    // Clear any existing messages
+                    setMessage('');
+                } else {
+                    // Show error message on login failure
+                    setMessage('Invalid credentials. Please try again.');
+                }
+            })
+            .catch(() => {
+                // In case of other errors
+                setMessage('An error occurred. Please try again.');
+            });
+
+        // Clear the message after 3 seconds
+        setTimeout(() => setMessage(''), 3000);
     };
 
     // Redirect to home if logged in
@@ -31,6 +49,11 @@ export const SignIn = () => {
                     <Card className="p-4 shadow">
                         <Card.Body>
                             <h2 className="text-center mb-4">Sign In</h2>
+                            {message && (
+                                <div className={`alert ${message.includes('successfully') ? 'alert-success' : 'alert-danger'}`} role="alert">
+                                    {message}
+                                </div>
+                            )}
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group controlId="formBasicEmail" className="mb-3">
                                     <Form.Label>Email Address</Form.Label>

@@ -34,6 +34,12 @@ export const Header = () => {
             <Nav.Link href="/movies">Movies</Nav.Link>
             <Nav.Link href="/events">Events</Nav.Link>
             <Nav.Link href="/posts">Posts</Nav.Link>
+            {isAuthenticated && (
+              <>
+                <Nav.Link href="/freinds">Freinds</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
+              </>
+            )}
           </Nav>
           <Form inline className="d-flex ms-auto">
             <FormControl type="text" placeholder="Search" className="me-2" />

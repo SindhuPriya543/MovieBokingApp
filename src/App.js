@@ -13,6 +13,11 @@ import { FinalBooking } from "./components/FinalBooking";
 import { SignIn } from "./components/auth/Signin";
 import { Register } from "./components/auth/Register";
 import ProtectedRoute from './components/auth//ProtectedRoute';
+import { Profile } from './components/auth/Profile';
+import { PostMessage } from './components/auth/PostMessage';
+import { MessageList } from './components/auth/MessageList';
+import { FriendRequests } from './components/auth/FriendRequests';
+import { UserList } from './components/auth/UserList';
 
 function App() {
   return (
@@ -58,9 +63,12 @@ function App() {
           } >
             {" "}
           </Route>
-          <Route path="/posts" element={
+          <Route path="/posts" element={<MessageList />} >
+            {" "}
+          </Route>
+          <Route path="/post-message" element={
             <ProtectedRoute>
-              <FinalBooking />
+              <PostMessage />
             </ProtectedRoute>
           } >
             {" "}
@@ -71,6 +79,24 @@ function App() {
           <Route path="/register" element={<Register />}>
             {" "}
           </Route>
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } >
+            {" "}
+          </Route>
+          <Route path="/freinds" element={
+            <ProtectedRoute>
+              <FriendRequests />
+            </ProtectedRoute>
+          } >
+            {" "}
+          </Route>
+          <Route path="/users" element={
+            <ProtectedRoute>
+              <UserList />
+            </ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
 

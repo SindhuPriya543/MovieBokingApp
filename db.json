@@ -1,54 +1,156 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "Post 1",
-      "content": "This is the first post"
+      "id": "838a",
+      "userId": "07af",
+      "userName": "RAHUL BATU",
+      "content": "Test posts",
+      "timestamp": "2024-09-21T04:56:18.958Z"
     },
     {
-      "id": 2,
-      "title": "Post 2",
-      "content": "This is the second post"
+      "id": "419d",
+      "userId": "07af",
+      "userName": "RAHUL BATU",
+      "content": "Test Post 2\n",
+      "timestamp": "2024-09-21T04:57:40.249Z"
+    },
+    {
+      "id": "b60f",
+      "userId": "07af",
+      "userName": "RAHUL BATU",
+      "content": "Testing again",
+      "timestamp": "2024-09-21T04:59:16.981Z"
+    },
+    {
+      "id": "fcce",
+      "userId": "07af",
+      "userName": "RAHUL BATU",
+      "content": "Test mesage to hide",
+      "timestamp": "2024-09-21T05:03:17.497Z",
+      "isHidden": true
+    },
+    {
+      "id": "6d04",
+      "userId": "86f8",
+      "userName": "Richa",
+      "content": "Test message public info",
+      "timestamp": "2024-09-21T05:09:28.618Z",
+      "isHidden": false
+    },
+    {
+      "id": "f593",
+      "userId": "86f8",
+      "userName": "Richa",
+      "content": "Test message hidden",
+      "timestamp": "2024-09-21T05:09:37.050Z",
+      "isHidden": true
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
       "password": "123456"
     },
     {
-      "id": "07af",
       "name": "RAHUL BATU",
       "email": "rahulbatu@gmail.com",
-      "password": "1234567890"
+      "password": "123456",
+      "id": "07af"
+    },
+    {
+      "id": "86f8",
+      "name": "Richa",
+      "email": "info@takshni.com",
+      "password": "123456"
+    },
+    {
+      "id": "42de",
+      "name": "Richa",
+      "email": "info@takshni.com",
+      "password": "123456"
+    }
+  ],
+  "friendRequests": [
+    {
+      "id": "ad99",
+      "senderId": "07af",
+      "recipientId": "1",
+      "senderName": "RAHUL BATU",
+      "status": "pending"
+    },
+    {
+      "id": "98a0",
+      "senderId": "07af",
+      "recipientId": "42de",
+      "senderName": "RAHUL BATU",
+      "status": "pending"
+    },
+    {
+      "id": "fa17",
+      "senderId": "86f8",
+      "recipientId": "42de",
+      "senderName": "Richa",
+      "status": "pending"
+    },
+    {
+      "id": "7b50",
+      "senderId": "86f8",
+      "recipientId": "07af",
+      "senderName": "Richa",
+      "status": "pending"
+    },
+    {
+      "id": "be05",
+      "senderId": "86f8",
+      "recipientId": "86f8",
+      "senderName": "Richa",
+      "status": "accepted"
+    },
+    {
+      "id": "672d",
+      "senderId": "86f8",
+      "recipientId": "42de",
+      "senderName": "Richa",
+      "status": "pending"
+    },
+    {
+      "id": "483e",
+      "senderId": "86f8",
+      "recipientId": "1",
+      "senderName": "Richa",
+      "status": "pending"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "postId": 1,
       "content": "Nice post!"
     },
     {
-      "id": 2,
+      "id": "2",
       "postId": 2,
       "content": "Great work!"
     }
   ],
   "images": [
     {
-      "url": "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w"
+      "url": "https://i.ytimg.com/vi/u2NuUWuwPCM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAOCoIl_z_mh65aeD8irtoicup6-w",
+      "id": "a63d"
     },
     {
-      "url": "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg"
+      "url": "https://m.media-amazon.com/images/S/pv-target-images/58e8a7988c6ba4b1979709adb606ca5b59a39eaf6fb02060bcdfef01ef1d8909.jpg",
+      "id": "1c35"
     },
     {
-      "url": "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg"
+      "url": "https://i.ytimg.com/vi/Sz71FoG5z2g/maxresdefault.jpg",
+      "id": "2801"
     },
     {
-      "url": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp"
+      "url": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EFE5D659E7C958E1177440F847E6CDAEBFD90F3162991ABE61FB584231DDAC1/scale?width=1200&aspectRatio=1.78&format=webp",
+      "id": "b836"
     }
   ],
   "movies": [
@@ -73,7 +175,8 @@
       "imdbID": "tt0499549",
       "Type": "movie",
       "Response": "True",
-      "Images": "https://m.media-amazon.com/images/S/pv-target-images/f0535dd61f56bddd6ee7f3bfb765645e45d78f373418ae37ee5103cf6eebbff0.jpg"
+      "Images": "https://m.media-amazon.com/images/S/pv-target-images/f0535dd61f56bddd6ee7f3bfb765645e45d78f373418ae37ee5103cf6eebbff0.jpg",
+      "id": "9bbf"
     },
     {
       "Title": "I Am Legend",
@@ -96,7 +199,8 @@
       "imdbID": "tt0480249",
       "Type": "movie",
       "Response": "True",
-      "Images": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p170977_p_v7_ae.jpg"
+      "Images": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p170977_p_v7_ae.jpg",
+      "id": "ee38"
     },
     {
       "Title": "The Avengers",
@@ -119,7 +223,8 @@
       "imdbID": "tt0848228",
       "Type": "movie",
       "Response": "True",
-      "Images": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg"
+      "Images": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+      "id": "6adb"
     },
     {
       "Title": "The Wolf of Wall Street",
@@ -142,7 +247,8 @@
       "imdbID": "tt0993846",
       "Type": "movie",
       "Response": "True",
-      "Images": "https://upload.wikimedia.org/wikipedia/en/d/d8/The_Wolf_of_Wall_Street_%282013%29.png"
+      "Images": "https://upload.wikimedia.org/wikipedia/en/d/d8/The_Wolf_of_Wall_Street_%282013%29.png",
+      "id": "b3b7"
     }
   ]
 }
