@@ -18,6 +18,9 @@ import { PostMessage } from './components/auth/PostMessage';
 import { MessageList } from './components/auth/MessageList';
 import { FriendRequests } from './components/auth/FriendRequests';
 import { UserList } from './components/auth/UserList';
+import AdminDashboard from './components/admin/AdminDashboard';
+import ManageUsers from './components/admin/ManageUsers';
+import PostAdvertisement from './components/admin/PostAdvertisement';
 
 function App() {
   return (
@@ -97,6 +100,9 @@ function App() {
             <ProtectedRoute>
               <UserList />
             </ProtectedRoute>} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/manage-users" element={<ManageUsers />} />
+          <Route path="/admin/post-ad" element={<PostAdvertisement />} />
         </Routes>
       </BrowserRouter>
 

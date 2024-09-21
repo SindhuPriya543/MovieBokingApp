@@ -5,6 +5,7 @@ import { profileReducer } from './profileReducer';
 import messageReducer from './messageReducer';
 import friendReducer from './friendReducer';
 import userReducer from './userReducer';
+import { adminReducer } from './adminReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     messages: messageReducer,
     friends: friendReducer,
     users: userReducer,
+    admin: adminReducer,
 });
 
 export default rootReducer;

@@ -46,30 +46,40 @@
       "isHidden": true
     }
   ],
+  "advertisements": [
+    {
+      "id": "03d3",
+      "content": "Test ad"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
-      "password": "123456"
+      "password": "123456",
+      "isBlocked": true
     },
     {
-      "name": "RAHUL BATU",
+      "name": "RAHUL",
       "email": "rahulbatu@gmail.com",
       "password": "123456",
-      "id": "07af"
+      "id": "07af",
+      "isBlocked": false
     },
     {
       "id": "86f8",
       "name": "Richa",
-      "email": "info@takshni.com",
-      "password": "123456"
+      "email": "info@retail.com",
+      "password": "123456",
+      "isBlocked": false
     },
     {
       "id": "42de",
       "name": "Richa",
-      "email": "info@takshni.com",
-      "password": "123456"
+      "email": "info@retail.com",
+      "password": "123456",
+      "isBlocked": false
     }
   ],
   "friendRequests": [
