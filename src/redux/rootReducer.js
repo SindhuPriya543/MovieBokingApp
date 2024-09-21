@@ -6,6 +6,7 @@ import messageReducer from './messageReducer';
 import friendReducer from './friendReducer';
 import userReducer from './userReducer';
 import { adminReducer } from './adminReducer';
+import postReducer from './postReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     friends: friendReducer,
     users: userReducer,
     admin: adminReducer,
+    posts: postReducer,
 });
 
 export default rootReducer;

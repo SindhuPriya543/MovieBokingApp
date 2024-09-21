@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Header } from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +20,9 @@ import { UserList } from './components/auth/UserList';
 import AdminDashboard from './components/admin/AdminDashboard';
 import ManageUsers from './components/admin/ManageUsers';
 import PostAdvertisement from './components/admin/PostAdvertisement';
+import EditUserProfile from './components/admin/EditUserProfile';
+import ManagePosts from './components/admin/ManagePosts';
+import { Unauthorized } from "./components/Unauthorized";
 
 function App() {
   return (
@@ -100,9 +102,26 @@ function App() {
             <ProtectedRoute>
               <UserList />
             </ProtectedRoute>} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/manage-users" element={<ManageUsers />} />
-          <Route path="/admin/post-ad" element={<PostAdvertisement />} />
+          <Route path="/admin/dashboard" element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>} />
+          <Route path="/admin/manage-users" element={
+            <ProtectedRoute>
+              <ManageUsers />
+            </ProtectedRoute>} />
+          <Route path="/admin/post-ad" element={
+            <ProtectedRoute>
+              <PostAdvertisement />
+            </ProtectedRoute>} />
+          <Route path="/edit-user/:userId" element={
+            <ProtectedRoute>
+              <EditUserProfile />
+            </ProtectedRoute>} />
+          <Route path="/admin/manage-posts" element={<ProtectedRoute>
+            <ManagePosts />
+          </ProtectedRoute>} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
         </Routes>
       </BrowserRouter>
 

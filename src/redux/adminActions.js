@@ -37,3 +37,21 @@ export const postAdvertisement = (content) => async (dispatch) => {
         type: POST_ADVERTISEMENT,
     });
 };
+
+export const updateUser = (userData) => async (dispatch) => {
+    try {
+        await axios.put(`http://localhost:5001/users/${userData.id}`, userData);
+        dispatch(fetchUsers()); // Fetch updated user list
+    } catch (error) {
+        console.error('Failed to update user:', error);
+    }
+};
+
+export const fetchUser = (userId) => async (dispatch) => {
+    try {
+        const response = await axios.get(`http://localhost:5001/users/${userId}`);
+        // Handle the response if needed
+    } catch (error) {
+        console.error('Failed to fetch user:', error);
+    }
+};

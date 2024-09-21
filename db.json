@@ -57,22 +57,17 @@
       "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
-      "password": "123456",
-      "isBlocked": false
+      "isBlocked": true
     },
     {
-      "name": "RAHUL",
-      "email": "rahulbatu@gmail.com",
-      "password": "123456",
       "id": "07af",
-      "isBlocked": false
+      "name": "RAHUL",
+      "email": "rahulbatu@gmail.com"
     },
     {
       "id": "86f8",
       "name": "Richa",
-      "email": "info@retail.com",
-      "password": "123456",
-      "isBlocked": true
+      "email": "noreply@retail.com"
     },
     {
       "id": "42de",
@@ -259,6 +254,11 @@
       "Response": "True",
       "Images": "https://upload.wikimedia.org/wikipedia/en/d/d8/The_Wolf_of_Wall_Street_%282013%29.png",
       "id": "b3b7"
+    }
+  ],
+  "admins": [
+    {
+      "id": "07af"
     }
   ]
 }

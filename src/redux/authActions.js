@@ -44,6 +44,10 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
         const user = response.data[0];
         console.log(user);
         if (user) {
+            // Check if user is an admin
+            const adminResponse = await axios.get('http://localhost:5001/admins');
+            const admins = adminResponse.data.map(admin => admin.id);
+            const isAdmin = admins.includes(user.id);
             if (user.isBlocked) {
                 // Dispatch failure if the user account is blocked
                 dispatch(loginFailure('Your account is blocked. Please contact admin.'));
@@ -52,12 +56,15 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
             // Simulate generating a token
             const fakeToken = 'fake-jwt-token';
 
+            // Create a user object with the isAdmin flag
+            const userWithAdminFlag = { ...user, isAdmin };
+
             // Store token in localStorage
             localStorage.setItem('token', fakeToken);
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(userWithAdminFlag));
 
             // Dispatch login success
-            dispatch(loginSuccess(user, fakeToken));
+            dispatch(loginSuccess(userWithAdminFlag, fakeToken));
         } else {
             dispatch(loginFailure('Invalid credentials. Please try again.'));
         }

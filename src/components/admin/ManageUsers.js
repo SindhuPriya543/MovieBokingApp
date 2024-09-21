@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, blockUser, unblockUser } from '../../redux/adminActions';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ManageUsers = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const ManageUsers = () => {
                             <Card.Body>
                                 <p><strong>{user.name}</strong></p>
                                 <p>{user.email}</p>
-                                <Button variant="success" onClick={() => handleUnblockUser(user.id)}>
+                                <Button variant="success" as={Link} to={`/edit-user/${user.id}`}>
                                     Edit User Profile
                                 </Button>
                                 {user.isBlocked ? (

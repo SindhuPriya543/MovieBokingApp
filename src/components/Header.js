@@ -1,7 +1,6 @@
 // Navbar.js
 import React from 'react';
 import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../images/logo.jpeg";
@@ -12,6 +11,7 @@ import { logoutUser } from '../redux/authActions';
 export const Header = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -39,6 +39,9 @@ export const Header = () => {
                 <Nav.Link href="/freinds">Freinds</Nav.Link>
                 <Nav.Link href="/profile">Profile</Nav.Link>
               </>
+            )}
+            {isAuthenticated && user && user.isAdmin && (
+              <Nav.Link href="/admin/dashboard">Dashboard</Nav.Link>
             )}
           </Nav>
           <Form inline className="d-flex ms-auto">
