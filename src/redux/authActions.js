@@ -44,6 +44,11 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
         const user = response.data[0];
         console.log(user);
         if (user) {
+            if (user.isBlocked) {
+                // Dispatch failure if the user account is blocked
+                dispatch(loginFailure('Your account is blocked. Please contact admin.'));
+                return; // Stop further processing
+            }
             // Simulate generating a token
             const fakeToken = 'fake-jwt-token';
 
@@ -54,7 +59,7 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
             // Dispatch login success
             dispatch(loginSuccess(user, fakeToken));
         } else {
-            dispatch(loginFailure('Invalid credentials'));
+            dispatch(loginFailure('Invalid credentials. Please try again.'));
         }
     } catch (error) {
         dispatch(loginFailure('An error occurred during login'));

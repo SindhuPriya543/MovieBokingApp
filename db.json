@@ -58,7 +58,7 @@
       "name": "John Doe",
       "email": "john@example.com",
       "password": "123456",
-      "isBlocked": true
+      "isBlocked": false
     },
     {
       "name": "RAHUL",
@@ -109,7 +109,7 @@
       "senderId": "86f8",
       "recipientId": "07af",
       "senderName": "Richa",
-      "status": "pending"
+      "status": "accepted"
     },
     {
       "id": "be05",

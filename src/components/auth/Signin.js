@@ -8,6 +8,7 @@ export const SignIn = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const errorMessage = useSelector((state) => state.auth.error); // Get error from state
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,23 +17,7 @@ export const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(loginUser({ email, password }))
-            .then((response) => {
-                if (response && response.type === 'LOGIN_SUCCESS') {
-                    // Clear any existing messages
-                    setMessage('');
-                } else {
-                    // Show error message on login failure
-                    setMessage('Invalid credentials. Please try again.');
-                }
-            })
-            .catch(() => {
-                // In case of other errors
-                setMessage('An error occurred. Please try again.');
-            });
-
-        // Clear the message after 3 seconds
-        setTimeout(() => setMessage(''), 3000);
+        dispatch(loginUser({ email, password }));
     };
 
     // Redirect to home if logged in
@@ -49,9 +34,9 @@ export const SignIn = () => {
                     <Card className="p-4 shadow">
                         <Card.Body>
                             <h2 className="text-center mb-4">Sign In</h2>
-                            {message && (
-                                <div className={`alert ${message.includes('successfully') ? 'alert-success' : 'alert-danger'}`} role="alert">
-                                    {message}
+                            {errorMessage && (
+                                <div className="alert alert-danger" role="alert">
+                                    {errorMessage}
                                 </div>
                             )}
                             <Form onSubmit={handleSubmit}>
