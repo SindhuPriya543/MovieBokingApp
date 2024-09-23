@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from "../images/logo.jpeg";
+import logo from "../images/ecube.jpeg";
 import userLogo from "../images/user.png";
 import userLogOut from "../images/logout-8-32.png";
 import { logoutUser } from '../redux/authActions';
