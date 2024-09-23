@@ -1,25 +1,28 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../redux/reducers/userReducer";
 import { Link, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
-  const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
-  const [sessionUsername, setSessionUsername] = useState("");
-  const [sessionPassword, setSessionPassword] = useState("");
-  const handleSignUp = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    sessionStorage.setItem("sessionUsername", JSON.stringify(username));
-    sessionStorage.setItem("sessionPassword", JSON.stringify(password));
-    nav("/signin");
+    dispatch(register({ username, password }));
   };
+
+  if (isAuthenticated) {
+    navigate("/signin");
+  }
 
   return (
     <div className="bg-zinc-300 h-screen flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-lg shadow-black/35 pl-10 w-[350px] h-96 flex flex-col justify-center ">
-        <form onSubmit={handleSignUp} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3">
           <div>
             <p className="font-semibold text-2xl tracking-wide ">SIGNUP </p>
           </div>

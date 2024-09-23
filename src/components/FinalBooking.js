@@ -1,6 +1,7 @@
 import React from "react";
 import QRCode from "../images/QRCode.png";
 import { useLocation } from "react-router-dom";
+import { BsQrCode } from "react-icons/bs";
 
 export const FinalBooking = () => {
   const location = useLocation();
@@ -38,12 +39,8 @@ export const FinalBooking = () => {
       </div>
 
       <div className=" flex  ml-[1.5rem] mt-[1rem] w-[47rem] h-[26rem] rounded-2xl bg-[#f2f1f1] relative">
-        <div className="w-5/10">
-          <img
-            src={QRCode}
-            alt="QRCode"
-            className="absolute top-[4rem] left-[2rem] h-[18rem]"
-          />
+        <div className="w-5/10 flex justify-center items-center">
+          <BsQrCode size={300} />
         </div>
         <div className="w-5/10 ">
           <div className=" text-4xl flex justify-center items-center mt-[5rem]">

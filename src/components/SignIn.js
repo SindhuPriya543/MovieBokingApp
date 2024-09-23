@@ -1,32 +1,32 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/reducers/userReducer";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SignIn = () => {
-  const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isAuthenticated, isAdmin, error } = useSelector(
+    (state) => state.user
+  );
+  const navigate = useNavigate();
 
-  const handleSignIn = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const storedUserName = JSON.parse(
-      sessionStorage.getItem("sessionUsername")
-    );
-
-    const storedPassword = JSON.parse(
-      sessionStorage.getItem("sessionPassword")
-    );
-    if (storedUserName === username && storedPassword === password) {
-      nav("/");
-    } else {
-      alert("Invalid Username or Password");
-    }
+    dispatch(login({ username, password }));
   };
+
+  if (isAuthenticated || isAdmin) {
+    navigate("/");
+  }
 
   return (
     <div className="bg-zinc-200 h-screen flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-lg shadow-black/35 pl-10 w-[350px] h-96 flex flex-col justify-center ">
-        <form onSubmit={handleSignIn} className="space-y-3">
+        {error && <p>{error}</p>}
+        <form onSubmit={handleSubmit} className="space-y-3">
           <div>
             <p className="font-semibold text-2xl tracking-wide ">LOGIN</p>
           </div>

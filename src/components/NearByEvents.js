@@ -7,26 +7,26 @@ export const NearByEvents = () => {
 
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/recipes")
+      .get("http://localhost:5001/events")
       .then((response) => setEventData(response.data));
   }, []);
 
-  console.log(eventData.recipes);
   return (
-    <div className="pt-28">
-      <h1 className="text-center text-3xl"> Events </h1>
-      <hr className="border border-black mt-2" />
+    <div className="pt-48">
+      <h1 className="text-center text-5xl"> Events </h1>
+      {/* <hr className="border border-gray-300 mt-4" /> */}
 
-      <div className="flex justify-center mt-4">
-        <div className="grid grid-cols-5 gap-4">
-          {eventData.recipes && eventData.recipes.length > 0 ? (
-            eventData.recipes.map((item, index) => (
+      <div className="flex justify-center mt-12">
+        <div className="grid grid-cols-5 gap-[4rem] ">
+          {eventData && eventData.length > 0 ? (
+            eventData.map((item, index) => (
               <div key={index} className="text-center">
                 <img
                   src={item.image}
-                  alt="Image 1"
-                  className="w-[14em] h-[20em] object-fill"
+                  alt="event"
+                  className="w-[20em] h-[30em] object-fill rounded-xl"
                 />
+                <div className="text-3xl">{item.name} </div>
               </div>
             ))
           ) : (

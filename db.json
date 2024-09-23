@@ -1,0 +1,29 @@
+ {"events": [
+   
+  {
+    "id": 1,
+    "name": "Coldplay Concert",
+    "image" :"https://examresultsguru.in/wp-content/uploads/2024/09/Coldplay-Mumbai-Concert-Ticket-Cost-Booking-18-19-21-January-2025-at-bookmyshow-Ticket-Booking-Rules.jpg" }
+  ,
+  {
+    "id": 2,
+    "name": "Clown Festival",
+    "image" :"https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00408387-lleackvfdq-portrait.jpg"
+    }
+  ,
+  {
+    "id": 3,
+    "name": "Hamley's Play",
+    "image" :"https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00362045-bsqrhgyxcy-portrait.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Magic Shakti",
+    "image" :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGoJg54H9PDCbBgkqTKZSLRprULEV_34XCg&s"
+  },{
+    "id": 5,
+    "name": "Kids Carnival",
+    "image" :"https://www.bookmystall.in/images2/25436.jpg"
+  }
+ ]
+}

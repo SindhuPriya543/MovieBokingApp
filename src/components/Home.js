@@ -1,23 +1,22 @@
 import React from "react";
 import "../css/home.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MoviesImageSlider from "./MoviesImageSlider";
-import { Header } from ".//Header";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../redux/reducers/movieReducer";
 
 export const Home = () => {
   const nav = useNavigate();
-  const location = useLocation();
+  const dispatch = useDispatch();
+  const { recommendedMovies } = useSelector((state) => state.movies);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://gist.githubusercontent.com/saniyusuf/406b843afdfb9c6a86e25753fe2761f4/raw/523c324c7fcc36efab8224f9ebb7556c09b69a14/Film.JSON"
-      )
-      .then((response) => setData(response.data));
-  }, []);
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
   function navToLatestMovies() {
     nav("/latestmovies");
   }
@@ -45,7 +44,7 @@ export const Home = () => {
   ];
   return (
     <div>
-      {location.pathname !== "/" && <Header />}
+      {/* {location.pathname !== "/" && <Header />} */}
       <div className="mt-28">
         <div className="flex justify-between gap-4 mt-[8.5rem] mx-4">
           <div
@@ -79,7 +78,7 @@ export const Home = () => {
 
         <div className="flex justify-center px-8 mt-3">
           <div className="flex space-x-4">
-            {data.slice(1, 5).map((item, index) => (
+            {recommendedMovies.slice(1, 5).map((item, index) => (
               <div key={index} className="text-center">
                 <img
                   src={item.Images}
@@ -87,7 +86,7 @@ export const Home = () => {
                   className="w-80 h-80 object-fill"
                 />
                 <button
-                  className="mt-2 bg-[#4CBEB6] texl-xl text-black font-bold w-[10rem] py-2 px-2 rounded"
+                  className="mt-2 bg-[#4CBEB6] texl-4xl text-black font-semibold w-[10rem] p-4 rounded"
                   onClick={() => navToMovieDetails(item)}
                 >
                   Book

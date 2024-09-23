@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { forgot } from "../redux/reducers/userReducer";
+import { useDispatch } from "react-redux";
 
 export const ForgotComponent = () => {
   const [username, setUsername] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
 
   const handleVerifyUsername = () => {
-    const storedUsername = JSON.parse(
-      sessionStorage.getItem("sessionUsername")
-    );
-    if (storedUsername === username) {
+    const storedUsername = JSON.parse(localStorage.getItem("user"));
+    if (storedUsername && storedUsername.username === username) {
       setIsVerified(true);
       setMessage("Username verified. You can reset your password.");
     } else {
@@ -20,9 +21,9 @@ export const ForgotComponent = () => {
 
   const handleResetPassword = () => {
     if (isVerified) {
-      sessionStorage.setItem("sessionPassword", newPassword);
+      dispatch(forgot({ username, password }));
       setMessage("Password reset successfully!");
-      setNewPassword("");
+      setPassword("");
     }
   };
 
@@ -53,8 +54,8 @@ export const ForgotComponent = () => {
               className="outline-none h-10 px-5 border border-sm w-full"
               type="password"
               placeholder="Enter new password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="mr-5 mt-4">
               <button
