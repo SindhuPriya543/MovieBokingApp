@@ -1,6 +1,8 @@
 // Navbar.js
 import React from 'react';
 import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../images/logo.jpeg";
@@ -20,28 +22,45 @@ export const Header = () => {
   return (
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand href="#home">
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ width: '150px', height: '50px' }}
-          />
-        </Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand >
+            <img
+              src={logo}
+              alt="Logo"
+              style={{ width: '150px', height: '50px' }}
+            />
+          </Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/movies">Movies</Nav.Link>
-            <Nav.Link href="/events">Events</Nav.Link>
-            <Nav.Link href="/posts">Posts</Nav.Link>
+            <LinkContainer to="/home">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/movies">
+              <Nav.Link>Movies</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/events">
+              <Nav.Link>Events</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/posts">
+              <Nav.Link>Posts</Nav.Link>
+            </LinkContainer>
             {isAuthenticated && (
               <>
-                <Nav.Link href="/freinds">Freinds</Nav.Link>
-                <Nav.Link href="/profile">Profile</Nav.Link>
+                <LinkContainer to="/freinds">
+                  <Nav.Link>Freinds</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/profile">
+                  <Nav.Link>User Profile</Nav.Link>
+                </LinkContainer>
               </>
             )}
             {isAuthenticated && user && user.isAdmin && (
-              <Nav.Link href="/admin/dashboard">Dashboard</Nav.Link>
+              <LinkContainer to="/admin/dashboard">
+                <Nav.Link>Admin Dashboard</Nav.Link>
+              </LinkContainer>
             )}
           </Nav>
           <Form inline className="d-flex ms-auto">

@@ -13,11 +13,13 @@ const EditUserProfile = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState(''); // Add password state
 
     useEffect(() => {
         if (user) {
             setName(user.name);
             setEmail(user.email);
+            // Password is not set in state to avoid displaying it
         } else {
             dispatch(fetchUser(userId));
         }
@@ -25,7 +27,17 @@ const EditUserProfile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateUser({ id: userId, name, email })).then(() => {
+
+        // Create formData including password only if it's provided
+        const formData = {
+            id: userId,
+            name,
+            email,
+            // Only include password if it is provided
+            ...(password && { password })
+        };
+
+        dispatch(updateUser(formData)).then(() => {
             navigate('/admin/manage-users'); // Redirect after update
         });
     };
@@ -54,6 +66,15 @@ const EditUserProfile = () => {
                                         placeholder="Enter email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="formBasicPassword" className="mb-3">
+                                    <Form.Label>Password (leave blank to keep current)</Form.Label>
+                                    <Form.Control
+                                        type="password"
+                                        placeholder="Enter new password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </Form.Group>
                                 <Button variant="primary" type="submit" className="w-100">

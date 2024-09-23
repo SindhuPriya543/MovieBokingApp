@@ -57,17 +57,22 @@
       "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
+      "password": "123456",
       "isBlocked": true
     },
     {
       "id": "07af",
       "name": "RAHUL",
-      "email": "rahulbatu@gmail.com"
+      "email": "rahulbatu@gmail.com",
+      "password": "123456",
+      "isBlocked": false
     },
     {
       "id": "86f8",
-      "name": "Richa",
-      "email": "noreply@retail.com"
+      "name": "Richa12",
+      "email": "noreply@retail.com",
+      "password": "123456",
+      "isBlocked": false
     },
     {
       "id": "42de",

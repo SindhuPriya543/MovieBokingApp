@@ -27,8 +27,9 @@ import { Unauthorized } from "./components/Unauthorized";
 function App() {
   return (
     <div>
-      <Header />
+
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />}>
             {" "}
