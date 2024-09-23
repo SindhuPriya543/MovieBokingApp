@@ -44,6 +44,11 @@ export const loginUser = ({ email, password }) => async (dispatch) => {
         const user = response.data[0];
         console.log(user);
         if (user) {
+            // Check if password matches
+            if (user.password !== password) {
+                dispatch(loginFailure('Invalid password. Please try again.'));
+                return;
+            }
             // Check if user is an admin
             const adminResponse = await axios.get('http://localhost:5001/admins');
             const admins = adminResponse.data.map(admin => admin.id);
